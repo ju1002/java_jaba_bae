@@ -15,7 +15,6 @@ public class ObjectDao {
 		 * 출력 = writrObject()
 		 */
 		
-		try(ObjectOutputStream oos = new ObjectOutputStream(new );)
 	}
 
 	
