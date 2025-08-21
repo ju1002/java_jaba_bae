@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.kh.idol.controller.IdolController;
+import com.kh.idol.model.vo.Fan;
 import com.kh.idol.model.vo.Idol;
 
 public class IdolView {
 	private Scanner sc = new Scanner(System.in);
 	private IdolController ic = new IdolController();
+	private Fan loginFan;
 
 	// 프로그램을 실행헀을 떄 가장 먼저 보여질 화면 출력해주는 기능
+	// 로그인에 성공한 회원의 정보를 담아줄 필드
 	public void mainMenu() {
 		System.out.println("\n\n aespa 커뮤니티에 오신것을 환영합니다.");
 
@@ -34,9 +37,11 @@ public class IdolView {
 			case 2:
 				signUp();
 				break;
-			case 3:login();
+			case 3:
+				login();
 				break;
 			case 4:
+				boardMenu();
 				break;
 			case 5:
 				break;
@@ -158,33 +163,70 @@ public class IdolView {
 		}
 
 	}
-	
+
 	public void login() {
 		System.out.println("\n로그인 서비스 입니다.");
-		
+
 		System.out.println("아이디를 입력해주세요");
 		String userId = sc.nextLine();
 		System.out.println("비밀번호를 입력해주세요");
 		String userPwd = sc.nextLine();
-		
-		
-		ic.login(userId, userPwd);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+		Fan fan = ic.login(userId, userPwd);
+
+		if (fan != null) {
+			System.out.println(fan.getNickName() + "님 환영합니다");
+			loginFan = fan;
+		} else {
+			System.out.println("로그인에 실패하셨습니다. 아이디 비밀번호를 다시 입력해 주세요");
+		}
+
 	}
-	
-	
-	
-	
+
+	private void boardMenu() {
+		while (true) {
+			System.out.println("\n에스파 게시판 입니다.");
+			System.out.println("이용하실 메뉴를 입력해주세요");
+			System.out.println("1. 게시글 작성");
+			System.out.println("2. 게시글 전체 조회");
+			System.out.println("3. 게시글 상세조회");
+			System.out.println("4. 메인메뉴로 돌아가기");
+			System.out.println("당신의 선택은????");
+			int menuNo = sc.nextInt();
+			switch (menuNo) {
+			case 1:
+				post();
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				return;
+			}
+		}
+
+	}
+
+	public void post() {
+		System.out.println("\n게시글 작성 서비스입니다.");
+
+		// 전제조건 : 로그인한 사용자만 게시글을 작성할 수 있음
+
+		if (loginFan != null) {
+
+			System.out.println("게시글 제목을 입력해주세요");
+			String boardTitle = sc.nextLine();
+
+			System.out.println("게시글 내용을 입력해주세요");
+			String boardContent = sc.nextLine();
+			
+			ic.post(boardTitle, boardContent, loginFan.getUserId());
+			System.out.println("게시글 작성 성공");
+		} else {
+			System.out.println("로그인 후 이용가능한 서비스 입니다.");
+
+		}
+	}
 
 }
