@@ -30,14 +30,7 @@ public class BufferedDao {
 	
 	public void inputFile() { 
 		//FileReader를 기반으로 BufferedReader를 사용해서 입려받기
-		try(BufferedReader bfr = new BufferedReader(new FileReader("c_Buffer.txt"))){
-			String str = "";
-			while((str = bfr.readerLine())!=null) {
-				System.out.println(str);
-				
-			}
-		}catch(IOException e ) {
-			e.printStackTrace();
+		
 		}
 	}
 

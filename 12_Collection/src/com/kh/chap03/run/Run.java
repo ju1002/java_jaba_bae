@@ -48,22 +48,10 @@ public class Run {
 		 */
 		System.out.println("=======================================");
 		
-		for(MBTI e : mbti) {
-			System.out.println(e);
-			//Set의 요소들을 List에 옯겨담아 인덱스를 활용
-			//List도 그렇고 Set도 그렇고 전부 다 Iterator구현중
-			// 모근 실제 객체를 Iterator타입으로 사용할 수 있음(다형성 적용)
-			// List계열 Set계열은 전부다 iterator()를 호출해서 반복을 시킬 수 있음
-			//Map계열에서는 바로는 불가능
-		}
-		List list = new ArrayList();
-		list.addAll(mbti);
-		for(int i = 0 ; i< list.size(); i++) {
-			System.out.println(list.get(i));
-		}
+		
 		
 		System.out.println("======================================");
 		//Iterator(반복자)
-		Iterator it = mbti.iterator();
+
 	}
 }

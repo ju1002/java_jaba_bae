@@ -127,6 +127,18 @@ public class IdolController {
 		
 	}
 	
+	public Board findByBoardNo(int boardNo) {
+		
+		if(boardNo> this.boardNo) {
+			return null;
+		}
+		
+		
+		
+		return boards.get(boardNo -1);
+		
+	}
+	
 	
 	
 	
