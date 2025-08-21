@@ -1,0 +1,1 @@
+package com.kh.chap02.encaptulation.model.VO;
