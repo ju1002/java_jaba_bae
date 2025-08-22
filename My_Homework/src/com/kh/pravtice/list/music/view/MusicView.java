@@ -57,18 +57,38 @@ public class MusicView {
 		Music m = new Music();
 		m.setTitle(title);
 		m.setSinger(singer);
-		Music music =mc.addList(m);
-		if(music != null) {System.out.println("출력 성공");
+		mc.addList(m);
+		if() {
 			
-		}else {System.out.print ("출력실패");
+		}
+			
+	
 	}
 	public void addAtZero() {
-		
+		System.out.println("＊＊＊＊＊＊＊ 첫 위치의 곡 추가 ＊＊＊＊＊＊＊＊");
+		String title = sc.nextLine();
+		System.out.println(title);
+		String singer = sc.nextLine();
+		Music m =new Music();
+		m.setTitle(title);
+		m.setSinger(singer);
+		mc.addAtZero();
+	}
+	public void printAll() {
+		System.out.println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊전체 곡 목록 출력 ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
+		mc.printAll();
 	}
 	public void searchMusic() {
+		System.out.println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊특정 곡 검색 ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
+		String title = sc.nextLine();
+		mc.searchMusic(title);
+		
 		
 	}
 	public void removeMusic() {
+		System.out.println("＊＊＊＊＊＊＊＊＊＊＊＊＊특정 곡 삭제＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
+		String title = sc.nextLine();
+		mc.removeMusic(title);
 		
 	}
 	public void setMusic() {
